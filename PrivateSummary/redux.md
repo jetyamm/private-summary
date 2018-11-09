@@ -2,10 +2,11 @@
 概念：用户在view层通过 store.dispatch 来发送 action ，当 store 接收到用户传递过来的 action 后，会把 state 和 action 传给 reducer ，而 reducer 会根据 action 的 type，来返回一个新的 state。而当 store 有变化的时候，store 就会调用监听函数 store.subscribe ，从而使得view层发生变化。
 
 ###注意：
-react-redux提供两个方法：
+（1）react-redux提供两个方法：
 * connect  
 * Provider
-
+（2）redux和vux都是页面刷新后仓库数据重新初始化，既重置，例如登录的用户信息不能用两者来存储，只能用sessionstorage或者localstorage来存储
+-------------------
 1、安装模块
 ```js
 npm install react-redux --save
@@ -86,6 +87,12 @@ EditableTable = connect(mapStateToProps,mapDispatchToProps)(EditableTable);
 ```
 
 5、通过this.props获取仓库对象
+```js
+// 修改仓库值
+this.props.addToStu(stu);
+// 获取仓库值
+this.props.student；
+```
 
 [redux工作原理图](https://img-blog.csdn.net/20180424095926281?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NTM0ODIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
